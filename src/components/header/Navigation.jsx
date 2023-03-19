@@ -1,6 +1,14 @@
+import { useState } from 'react';
+
 export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function HandleToggleGuide() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <nav>
+    <nav className="px-6 pt-10 pb-6 flex items-center relative justify-between">
       <a href="./" aria-label="Shortly Homepage">
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
           <path
@@ -9,36 +17,44 @@ export default function Navigation() {
           />
         </svg>
       </a>
-      <button aria-label="Toggle Guide">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <button
+        className="w-[24px] h-[21px] flex items-center justify-center"
+        aria-label="Toggle Guide"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        onClick={HandleToggleGuide}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#9e9aa7">
           <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
         </svg>
       </button>
-      <div>
-        <div>
-          <ul>
-            <li>
-              <a href="#">Features</a>
-            </li>
-            <li>
-              <a href="#">Pricing</a>
-            </li>
-            <li>
-              <a href="#">Resources</a>
-            </li>
-          </ul>
+      {isOpen && (
+        <div className="absolute top-full bg-violet-700 w-[calc(100%-48px)] rounded-lg px-8 py-10 flex flex-col items-center text-center text-md font-medium text-white">
+          <div className="pb-8">
+            <ul className="flex flex-col gap-8">
+              <li>
+                <a href="#">Features</a>
+              </li>
+              <li>
+                <a href="#">Pricing</a>
+              </li>
+              <li>
+                <a href="#">Resources</a>
+              </li>
+            </ul>
+          </div>
+          <div className="pt-8 border-t-[1px] w-full border-t-violet-400">
+            <ul className="flex flex-col gap-6">
+              <li>
+                <button>Login</button>
+              </li>
+              <li>
+                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-full">Sign Up</button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <ul>
-            <li>
-              <button>Login</button>
-            </li>
-            <li>
-              <button>Sign Up</button>
-            </li>
-          </ul>
-        </div>
-      </div>
+      )}
     </nav>
   );
 }

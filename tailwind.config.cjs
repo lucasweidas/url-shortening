@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
+      fontSize: {
+        md: ['1.125rem'],
+      },
       colors: {
         cyan: {
           500: 'hsl(180, 66%, 49%)',
