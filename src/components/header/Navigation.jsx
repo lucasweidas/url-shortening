@@ -43,13 +43,13 @@ export default function Navigation() {
               </li>
             </ul>
           </div>
-          <div className="pt-8 border-t-[1px] w-full border-t-violet-400">
+          <div className="pt-8 border-t w-full border-t-violet-400">
             <ul className="flex flex-col gap-6">
               <li>
                 <button>Login</button>
               </li>
               <li>
-                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-full">Sign Up</button>
+                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-3xl">Sign Up</button>
               </li>
             </ul>
           </div>
