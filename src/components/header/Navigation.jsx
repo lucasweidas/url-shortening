@@ -49,7 +49,9 @@ export default function Navigation() {
                 <button>Login</button>
               </li>
               <li>
-                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-3xl">Sign Up</button>
+                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-3xl hover:brightness-110 focus-visible:brightness-110 transition-[filter]">
+                  Sign Up
+                </button>
               </li>
             </ul>
           </div>
