@@ -35,7 +35,6 @@ export default function Main() {
             </div>
           </div>
         </div>
-
         <section className="mt-20 text-center">
           <h2 className="font-bold text-2xl text-violet-800">Advanced Statistics</h2>
           <p className="text-violet-400 mt-5">Track how your links are performing across the web with our advanced statistics dashboard.</p>
@@ -56,7 +55,6 @@ export default function Main() {
                 </p>
               </div>
             </section>
-
             <section className="relative mt-24 bg-white rounded-md flex flex-col items-center">
               <div className="absolute -top-11 h-[88px] w-[88px] bg-violet-700 flex items-center justify-center rounded-[50%]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -73,7 +71,6 @@ export default function Main() {
                 </p>
               </div>
             </section>
-
             <section className="relative mt-24 bg-white rounded-md flex flex-col items-center">
               <div className="absolute -top-11 h-[88px] w-[88px] bg-violet-700 flex items-center justify-center rounded-[50%]">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -92,12 +89,13 @@ export default function Main() {
             </section>
           </div>
         </section>
-
-        <section>
-          <h2>Boost your links today</h2>
-          <button>Get Started</button>
-        </section>
       </div>
+      <section className="h-[18.75rem] flex flex-col items-center justify-center mt-20 bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-no-repeat bg-center bg-cover">
+        <h2 className="text-white text-[1.625rem] font-bold">Boost your links today</h2>
+        <button className="bg-cyan-500 flex items-center justify-center h-14 w-[12.5rem] px-6 mx-auto rounded-[1.75rem] mt-6 text-white font-medium text-lg">
+          Get Started
+        </button>
+      </section>
     </main>
   );
 }
