@@ -8,7 +8,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="px-6 pt-10 pb-6 flex items-center relative justify-between">
+    <nav className="relative flex items-center justify-between px-6 pt-10 pb-6">
       <a href="./" aria-label="Shortly Homepage">
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
           <path
@@ -18,7 +18,7 @@ export default function Navigation() {
         </svg>
       </a>
       <button
-        className="w-[24px] h-[21px] flex items-center justify-center"
+        className="flex h-[21px] w-[24px] items-center justify-center"
         aria-label="Toggle Guide"
         aria-expanded={isOpen}
         aria-haspopup="true"
@@ -29,7 +29,7 @@ export default function Navigation() {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute top-full bg-violet-700 w-[calc(100%-48px)] rounded-lg px-8 py-10 flex flex-col items-center text-center text-md font-medium text-white">
+        <div className="absolute top-full flex w-[calc(100%-48px)] flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white">
           <div className="pb-8">
             <ul className="flex flex-col gap-8">
               <li>
@@ -43,13 +43,13 @@ export default function Navigation() {
               </li>
             </ul>
           </div>
-          <div className="pt-8 border-t w-full border-t-violet-400">
+          <div className="w-full border-t border-t-violet-400 pt-8">
             <ul className="flex flex-col gap-6">
               <li>
                 <button>Login</button>
               </li>
               <li>
-                <button className="bg-cyan-500 w-full h-12 flex items-center justify-center rounded-3xl hover:brightness-110 focus-visible:brightness-110 transition-[filter]">
+                <button className="flex h-12 w-full items-center justify-center rounded-3xl bg-cyan-500 transition-[filter] hover:brightness-110 focus-visible:brightness-110">
                   Sign Up
                 </button>
               </li>
