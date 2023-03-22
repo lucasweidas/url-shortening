@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-violet-900 flex flex-col items-center px-6 py-14">
+    <footer className="flex flex-col items-center bg-violet-900 px-6 py-14">
       <a href="./" aria-label="Shortly Homepage">
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
           <path
@@ -9,76 +9,76 @@ export default function Footer() {
           />
         </svg>
       </a>
-      <div className="mt-12 text-center flex flex-col gap-11">
+      <div className="mt-12 flex flex-col gap-11 text-center">
         <section>
-          <h2 className="text-white font-bold">Features</h2>
-          <ul className="flex flex-col gap-3 mt-5">
+          <h2 className="font-bold text-white">Features</h2>
+          <ul className="mt-5 flex flex-col gap-3">
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Link Shortening
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Branded Links
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Analytics
               </a>
             </li>
           </ul>
         </section>
         <section>
-          <h2 className="text-white font-bold">Resources</h2>
-          <ul className="flex flex-col gap-3 mt-5">
+          <h2 className="font-bold text-white">Resources</h2>
+          <ul className="mt-5 flex flex-col gap-3">
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Blog
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Developers
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Support
               </a>
             </li>
           </ul>
         </section>
         <section>
-          <h2 className="text-white font-bold">Company</h2>
-          <ul className="flex flex-col gap-3 mt-5">
+          <h2 className="font-bold text-white">Company</h2>
+          <ul className="mt-5 flex flex-col gap-3">
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 About
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Our Team
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Careers
               </a>
             </li>
             <li>
-              <a className="text-gray-300 inline-block hover:text-cyan-500" href="#">
+              <a className="inline-block text-gray-300 transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#">
                 Contact
               </a>
             </li>
           </ul>
         </section>
         <div>
-          <ul className="flex gap-6 items-center justify-center">
+          <ul className="flex items-center justify-center gap-6">
             <li>
-              <a className="text-white hover:text-cyan-500" href="#" aria-label="Facebook">
+              <a className="text-white transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#" aria-label="Facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path
                     fill="currentColor"
@@ -88,7 +88,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className="text-white hover:text-cyan-500" href="#" aria-label="Twitter">
+              <a className="text-white transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#" aria-label="Twitter">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20">
                   <path
                     fill="currentColor"
@@ -98,7 +98,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className="text-white hover:text-cyan-500" href="#" aria-label="Pinterest">
+              <a className="text-white transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#" aria-label="Pinterest">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path
                     fill="currentColor"
@@ -108,7 +108,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className="text-white hover:text-cyan-500" href="#" aria-label="Instagram">
+              <a className="text-white transition-colors hover:text-cyan-500 focus-visible:text-cyan-500" href="#" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                   <path
                     fill="currentColor"
