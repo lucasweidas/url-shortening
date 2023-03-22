@@ -1,13 +1,16 @@
+import { useRef, useState } from 'react';
 import workingImg from '/assets/images/illustration-working.svg';
 
 export default function Main() {
+  const [links, setLinks] = useState([]);
+
   return (
     <main className="overflow-hidden">
       <section className="flex flex-col-reverse items-center gap-10">
         <div className="px-6 text-center">
           <h1 className="text-4xl font-bold text-violet-900">More than just shorter links</h1>
-          <p className="text-violet-400 mt-3">Build your brand's recognition and get detailed insights on how your links are performing.</p>
-          <button className="bg-cyan-500 flex items-center justify-center h-14 w-[12.5rem] px-6 mx-auto rounded-[1.75rem] mt-6 text-white font-medium text-lg">
+          <p className="mt-3 text-violet-400">Build your brand's recognition and get detailed insights on how your links are performing.</p>
+          <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110">
             Get Started
           </button>
         </div>
@@ -15,32 +18,19 @@ export default function Main() {
           <img className="w-[140%] max-w-none" src={workingImg} alt="" aria-hidden="true" />
         </div>
       </section>
-      <div className="bg-[linear-gradient(to_bottom,#ffffff_80px,#f0f1f6_10%)] px-6">
+      <div className="bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20">
         <div className="mt-20 flex flex-col gap-6">
-          <form className="bg-[url(/assets/images/bg-shorten-mobile.svg)] bg-no-repeat bg-right-top bg-violet-700 p-6 rounded-lg flex flex-col gap-4">
-            <input className="p-3 rounded-md" type="text" placeholder="Shorten a link here..." />
-            <button className="bg-cyan-500 h-12 px-4 text-white text-lg rounded-md" type="submit">
-              Shorten It!
-            </button>
-          </form>
-          <div className="bg-white rounded-md">
-            <div className="p-4">
-              <a href="#">https://www.frontendmentor.io</a>
-            </div>
-            <div className="p-4 flex flex-col gap-4 border-t border-t-violet-400">
-              <a className="text-cyan-500" href="#">
-                https://reLink/k4Kyk
-              </a>
-              <button className="p-2 bg-cyan-500 rounded-md text-white">Copy</button>
-            </div>
-          </div>
+          {<LinkForm addLink={(original, short) => setLinks([...links, { original, short }])} />}
+          {links.map(({ original, short }) => (
+            <ShortLink key={short} original={original} short={short} />
+          ))}
         </div>
         <section className="mt-20 text-center">
-          <h2 className="font-bold text-2xl text-violet-800">Advanced Statistics</h2>
-          <p className="text-violet-400 mt-5">Track how your links are performing across the web with our advanced statistics dashboard.</p>
+          <h2 className="text-2xl font-bold text-violet-800">Advanced Statistics</h2>
+          <p className="mt-5 text-violet-400">Track how your links are performing across the web with our advanced statistics dashboard.</p>
           <div>
-            <section className="relative mt-24 bg-white rounded-md flex flex-col items-center">
-              <div className="absolute -top-11 h-[88px] w-[88px] bg-violet-700 flex items-center justify-center rounded-[50%]">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                   <path
                     fill="#2BD0D0"
@@ -55,8 +45,8 @@ export default function Main() {
                 </p>
               </div>
             </section>
-            <section className="relative mt-24 bg-white rounded-md flex flex-col items-center">
-              <div className="absolute -top-11 h-[88px] w-[88px] bg-violet-700 flex items-center justify-center rounded-[50%]">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white before:absolute before:-top-24 before:h-24 before:w-2 before:bg-cyan-500 after:absolute after:-bottom-24 after:h-24 after:w-2 after:bg-cyan-500">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                   <path
                     fill="#2BD0D0"
@@ -71,8 +61,8 @@ export default function Main() {
                 </p>
               </div>
             </section>
-            <section className="relative mt-24 bg-white rounded-md flex flex-col items-center">
-              <div className="absolute -top-11 h-[88px] w-[88px] bg-violet-700 flex items-center justify-center rounded-[50%]">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
                   <path
                     fill="#2BD0D0"
@@ -90,12 +80,109 @@ export default function Main() {
           </div>
         </section>
       </div>
-      <section className="h-[18.75rem] flex flex-col items-center justify-center mt-20 bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-no-repeat bg-center bg-cover">
-        <h2 className="text-white text-[1.625rem] font-bold">Boost your links today</h2>
-        <button className="bg-cyan-500 flex items-center justify-center h-14 w-[12.5rem] px-6 mx-auto rounded-[1.75rem] mt-6 text-white font-medium text-lg">
+      <section className="flex h-[18.75rem] flex-col items-center justify-center bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-cover bg-center bg-no-repeat">
+        <h2 className="text-[1.625rem] font-bold text-white">Boost your links today</h2>
+        <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110">
           Get Started
         </button>
       </section>
     </main>
   );
+}
+
+function LinkForm({ addLink }) {
+  const [error, setError] = useState(null);
+  const inputLinkRef = useRef();
+  const ring = error ? 'ring-red-300 ring-2 outline-none' : '';
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const input = inputLinkRef.current;
+    const { value } = input;
+
+    if (!value.length) {
+      setError(getErrorMessage(1));
+      return;
+    }
+
+    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${value}`);
+    if (!response.ok) {
+      const reason = await response.json();
+      setError(getErrorMessage(reason.error_code));
+      return;
+    }
+
+    const result = await response.json();
+    const { full_short_link } = result.result;
+    addLink(value, full_short_link);
+    setError(null);
+  }
+
+  return (
+    <form
+      className="flex flex-col rounded-lg bg-violet-700 bg-[url(/assets/images/bg-shorten-mobile.svg)] bg-right-top bg-no-repeat p-6"
+      onSubmit={handleSubmit}
+    >
+      <input className={`rounded-md p-3 ${ring}`} type="text" id="input-link" placeholder="Shorten a link here..." ref={inputLinkRef} />
+      {error && <p className="mt-2 text-sm italic text-red-300">{error}</p>}
+      <button
+        className="mt-4 h-12 rounded-md bg-cyan-500 px-4 text-lg text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110"
+        type="submit"
+      >
+        Shorten It!
+      </button>
+    </form>
+  );
+}
+
+function ShortLink({ original, short }) {
+  const [copied, setCopied] = useState(false);
+  const timeoutId = useRef(null);
+  const buttonBg = copied ? 'bg-violet-700' : 'bg-cyan-500';
+
+  function handleCopy() {
+    if (timeoutId.current) {
+      clearTimeout(timeoutId.current);
+    }
+    navigator.clipboard.writeText(short);
+    timeoutId.current = setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+    setCopied(true);
+  }
+
+  return (
+    <div className="rounded-md bg-white">
+      <div className="p-4">
+        <a className="block overflow-hidden text-ellipsis whitespace-nowrap" href={original} target="_blank" rel="noopener noreferrer">
+          {original}
+        </a>
+      </div>
+      <div className="flex flex-col gap-4 border-t border-t-violet-400 p-4">
+        <a className="block overflow-hidden text-ellipsis whitespace-nowrap text-cyan-500" href={short} target="_blank" rel="noopener noreferrer">
+          {short}
+        </a>
+        <button
+          className={`rounded-md p-2 text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 ${buttonBg} transition-colors`}
+          onClick={handleCopy}
+        >
+          {copied ? 'Copied!' : 'Copy'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function getErrorMessage(errorCode) {
+  switch (errorCode) {
+    case 1:
+      return 'Please add a link';
+    case 2:
+      return 'Enter a valid link';
+    case 6:
+      return 'Something went wrong';
+    case 10:
+      return 'Enter an allowed link';
+  }
+  return 'Please try again';
 }
