@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,35 +29,66 @@ export default function Navigation() {
           <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
         </svg>
       </button>
-      {isOpen && (
-        <div className="absolute top-full flex w-[calc(100%-48px)] flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white">
-          <div className="pb-8">
-            <ul className="flex flex-col gap-8">
-              <li>
-                <a href="#">Features</a>
-              </li>
-              <li>
-                <a href="#">Pricing</a>
-              </li>
-              <li>
-                <a href="#">Resources</a>
-              </li>
-            </ul>
-          </div>
-          <div className="w-full border-t border-t-violet-400 pt-8">
-            <ul className="flex flex-col gap-6">
-              <li>
-                <button>Login</button>
-              </li>
-              <li>
-                <button className="flex h-12 w-full items-center justify-center rounded-3xl bg-cyan-500 transition-[filter] hover:brightness-110 focus-visible:brightness-110">
-                  Sign Up
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            className="absolute top-full flex w-[calc(100%-48px)] flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white"
+            variants={guideAnimation}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <div className="pb-8">
+              <ul className="flex flex-col gap-8">
+                <li>
+                  <a href="#">Features</a>
+                </li>
+                <li>
+                  <a href="#">Pricing</a>
+                </li>
+                <li>
+                  <a href="#">Resources</a>
+                </li>
+              </ul>
+            </div>
+            <div className="w-full border-t border-t-violet-400 pt-8">
+              <ul className="flex flex-col gap-6">
+                <li>
+                  <button>Login</button>
+                </li>
+                <li>
+                  <button className="flex h-12 w-full items-center justify-center rounded-3xl bg-cyan-500 transition-[filter] hover:brightness-110 focus-visible:brightness-110">
+                    Sign Up
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
+
+const guideAnimation = {
+  hidden: {
+    y: '-7%',
+    opacity: 0,
+  },
+  visible: {
+    y: '0%',
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: 'easeOut',
+    },
+  },
+  exit: {
+    y: '-7%',
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: 'easeIn',
+    },
+  },
+};
