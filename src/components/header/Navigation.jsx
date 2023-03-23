@@ -32,7 +32,7 @@ export default function Navigation() {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
-            className="absolute top-full flex w-[calc(100%-48px)] flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white"
+            className="absolute top-full right-6 flex w-[calc(100%-48px)] max-w-md flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white"
             variants={guideAnimation}
             initial="hidden"
             animate="visible"

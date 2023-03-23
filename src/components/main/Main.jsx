@@ -14,12 +14,12 @@ export default function Main() {
             Get Started
           </button>
         </div>
-        <div className="pl-6">
+        <div className="max-w-lg pl-6">
           <img className="w-[140%] max-w-none" src={workingImg} alt="" aria-hidden="true" />
         </div>
       </section>
       <div className="bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20">
-        <div className="mt-20 flex flex-col gap-6">
+        <div className="mx-auto mt-20 flex max-w-2xl flex-col gap-6">
           {<LinkForm addLink={(original, short) => setLinks([...links, { original, short }])} />}
           {links.map(({ original, short }) => (
             <ShortLink key={short} original={original} short={short} />
@@ -28,7 +28,7 @@ export default function Main() {
         <section className="mt-20 text-center">
           <h2 className="text-2xl font-bold text-violet-800">Advanced Statistics</h2>
           <p className="mt-5 text-violet-400">Track how your links are performing across the web with our advanced statistics dashboard.</p>
-          <div>
+          <div className="mx-auto max-w-2xl">
             <section className="relative mt-24 flex flex-col items-center rounded-md bg-white">
               <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -80,7 +80,7 @@ export default function Main() {
           </div>
         </section>
       </div>
-      <section className="flex h-[18.75rem] flex-col items-center justify-center bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-cover bg-center bg-no-repeat">
+      <section className="flex h-[18.75rem] flex-col items-center justify-center bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-cover bg-center bg-no-repeat px-4 text-center">
         <h2 className="text-[1.625rem] font-bold text-white">Boost your links today</h2>
         <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110">
           Get Started
