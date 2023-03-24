@@ -6,31 +6,37 @@ export default function Main() {
 
   return (
     <main className="overflow-hidden">
-      <section className="flex flex-col-reverse items-center gap-10">
-        <div className="px-6 text-center">
-          <h1 className="text-4xl font-bold text-violet-900">More than just shorter links</h1>
-          <p className="mt-3 text-violet-400">Build your brand's recognition and get detailed insights on how your links are performing.</p>
-          <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110">
+      <section className="flex max-w-[calc(69.5rem+3rem)] flex-col-reverse items-center gap-10 px-6 lg:mx-auto lg:flex-row lg:gap-[clamp(3rem,5vw,4rem)]">
+        <div className="max-w-[36rem] text-center lg:text-start">
+          <h1 className="text-4xl font-bold text-violet-900 lg:text-[clamp(3rem,7vw,4.75rem)] lg:leading-tight">More than just shorter links</h1>
+          <p className="mt-3 text-violet-400 lg:mt-0 lg:text-xl lg:leading-normal">
+            Build your brand's recognition and get detailed insights on how your links are performing.
+          </p>
+          <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 lg:mx-0 lg:mt-8 lg:text-xl lg:font-bold">
             Get Started
           </button>
         </div>
-        <div className="max-w-lg pl-6">
+        <div className="-mr-6 max-w-lg lg:-mr-16">
           <img className="w-[140%] max-w-none" src={workingImg} alt="" aria-hidden="true" />
         </div>
       </section>
-      <div className="bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20">
-        <div className="mx-auto mt-20 flex max-w-2xl flex-col gap-6">
+      <div className="mt-20 bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20 lg:mt-16 lg:pb-[7.5rem]">
+        <div className="mx-auto max-w-2xl lg:max-w-5.5xl">
           {<LinkForm addLink={(original, short) => setLinks([...links, { original, short }])} />}
-          {links.map(({ original, short }) => (
-            <ShortLink key={short} original={original} short={short} />
-          ))}
+          <div className={`mt-6 flex max-h-[29rem] flex-col gap-6 overflow-y-scroll`}>
+            {links.map(({ original, short }) => (
+              <ShortLink key={short} original={original} short={short} />
+            ))}
+          </div>
         </div>
-        <section className="mt-20 text-center">
-          <h2 className="text-2xl font-bold text-violet-800">Advanced Statistics</h2>
-          <p className="mt-5 text-violet-400">Track how your links are performing across the web with our advanced statistics dashboard.</p>
-          <div className="mx-auto max-w-2xl">
-            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white">
-              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
+        <section className="mt-20 text-center lg:mt-28">
+          <div className="mx-auto max-w-lg">
+            <h2 className="text-2xl font-bold text-violet-800 lg:text-4xl">Advanced Statistics</h2>
+            <p className="mt-5 text-violet-400 lg:text-lg">Track how your links are performing across the web with our advanced statistics dashboard.</p>
+          </div>
+          <div className="mx-auto max-w-2xl lg:mt-[6.5rem] lg:flex lg:min-h-[22.25rem] lg:max-w-5.5xl lg:gap-8 lg:text-start">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white lg:mt-0 lg:self-start">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700 lg:left-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                   <path
                     fill="#2BD0D0"
@@ -38,15 +44,15 @@ export default function Main() {
                   />
                 </svg>
               </div>
-              <div className="px-6 pt-20 pb-10">
-                <h3 className="text-[1.25rem] font-bold text-violet-800">Brand Recognition</h3>
+              <div className="px-6 pt-20 pb-10 lg:px-7">
+                <h3 className="text-[1.25rem] font-bold text-violet-800 lg:text-[clamp(1.25rem,1.9vw,1.5rem)] lg:leading-tight">Brand Recognition</h3>
                 <p className="mt-4 text-violet-400">
                   Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.
                 </p>
               </div>
             </section>
-            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white before:absolute before:-top-24 before:h-24 before:w-2 before:bg-cyan-500 after:absolute after:-bottom-24 after:h-24 after:w-2 after:bg-cyan-500">
-              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white before:absolute before:-top-24 before:h-24 before:w-2 before:bg-cyan-500 after:absolute after:-bottom-24 after:h-24 after:w-2 after:bg-cyan-500 lg:my-11 lg:self-center lg:before:top-28 lg:before:-left-8 lg:before:h-2 lg:before:w-8 lg:after:top-28 lg:after:-right-8 lg:after:bottom-0 lg:after:h-2 lg:after:w-8">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700 lg:left-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
                   <path
                     fill="#2BD0D0"
@@ -54,15 +60,15 @@ export default function Main() {
                   />
                 </svg>
               </div>
-              <div className="px-6 pt-20 pb-10">
-                <h3 className="text-[1.25rem] font-bold text-violet-800">Detailed Records</h3>
+              <div className="px-6 pt-20 pb-10 lg:px-7">
+                <h3 className="text-[1.25rem] font-bold text-violet-800 lg:text-[clamp(1.25rem,1.9vw,1.5rem)] lg:leading-tight">Detailed Records</h3>
                 <p className="mt-4 text-violet-400">
                   Gain insights into who is clicking your links. Knowing when and where people engage with your content helps inform better decisions.
                 </p>
               </div>
             </section>
-            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white">
-              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700">
+            <section className="relative mt-24 flex flex-col items-center rounded-md bg-white lg:mt-0 lg:self-end">
+              <div className="absolute -top-11 flex h-[88px] w-[88px] items-center justify-center rounded-[50%] bg-violet-700 lg:left-8">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
                   <path
                     fill="#2BD0D0"
@@ -70,8 +76,8 @@ export default function Main() {
                   />
                 </svg>
               </div>
-              <div className="px-6 pt-20 pb-10">
-                <h3 className="text-[1.25rem] font-bold text-violet-800">Fully Customizable</h3>
+              <div className="px-6 pt-20 pb-10 lg:px-7">
+                <h3 className="text-[1.25rem] font-bold text-violet-800 lg:text-[clamp(1.25rem,1.9vw,1.5rem)] lg:leading-tight">Fully Customizable</h3>
                 <p className="mt-4 text-violet-400">
                   Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.
                 </p>
@@ -80,9 +86,9 @@ export default function Main() {
           </div>
         </section>
       </div>
-      <section className="flex h-[18.75rem] flex-col items-center justify-center bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-cover bg-center bg-no-repeat px-4 text-center">
-        <h2 className="text-[1.625rem] font-bold text-white">Boost your links today</h2>
-        <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110">
+      <section className="flex h-[18.75rem] flex-col items-center justify-center bg-violet-700 bg-[url('/assets/images/bg-boost-mobile.svg')] bg-cover bg-center bg-no-repeat px-4 text-center lg:h-[15.75rem] lg:bg-[url('/assets/images/bg-boost-desktop.svg')]">
+        <h2 className="text-[1.625rem] font-bold text-white lg:text-[2.5rem]">Boost your links today</h2>
+        <button className="mx-auto mt-6 flex h-14 w-[12.5rem] items-center justify-center rounded-[1.75rem] bg-cyan-500 px-6 text-lg font-medium text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 lg:text-xl lg:font-bold">
           Get Started
         </button>
       </section>
@@ -120,13 +126,22 @@ function LinkForm({ addLink }) {
 
   return (
     <form
-      className="flex flex-col rounded-lg bg-violet-700 bg-[url(/assets/images/bg-shorten-mobile.svg)] bg-right-top bg-no-repeat p-6"
+      className="flex flex-col gap-4 rounded-lg bg-violet-700 bg-[url(/assets/images/bg-shorten-mobile.svg)] bg-right-top bg-no-repeat p-6 lg:flex-row lg:gap-6 lg:bg-[url(/assets/images/bg-shorten-desktop.svg)] lg:px-16 lg:py-[3.25rem]"
       onSubmit={handleSubmit}
     >
-      <input className={`rounded-md p-3 ${ring}`} type="text" id="input-link" placeholder="Shorten a link here..." ref={inputLinkRef} />
-      {error && <p className="mt-2 text-sm italic text-red-300">{error}</p>}
+      <div className="relative w-full">
+        <input
+          className={`h-12 rounded-md px-3 ${ring} w-full lg:h-16 lg:px-8`}
+          type="text"
+          id="input-link"
+          placeholder="Shorten a link here..."
+          ref={inputLinkRef}
+          aria-label="Enter a link to shorten"
+        />
+        {error && <p className="mt-2 text-sm italic text-red-300 lg:absolute lg:left-0 lg:top-full">{error}</p>}
+      </div>
       <button
-        className="mt-4 h-12 rounded-md bg-cyan-500 px-4 text-lg text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110"
+        className="h-12 flex-shrink-0 rounded-md bg-cyan-500 px-4 text-lg text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 lg:h-16 lg:w-[11rem]"
         type="submit"
       >
         Shorten It!
@@ -152,18 +167,18 @@ function ShortLink({ original, short }) {
   }
 
   return (
-    <div className="rounded-md bg-white">
-      <div className="p-4">
+    <div className="rounded-md bg-white lg:flex lg:items-center lg:justify-between lg:gap-6 lg:py-4 lg:px-6">
+      <div className="p-4 lg:p-0">
         <a className="block overflow-hidden text-ellipsis whitespace-nowrap" href={original} target="_blank" rel="noopener noreferrer">
           {original}
         </a>
       </div>
-      <div className="flex flex-col gap-4 border-t border-t-violet-400 p-4">
+      <div className="flex flex-col gap-4 border-t border-t-violet-400 p-4 lg:flex-row lg:items-center lg:gap-6 lg:border-t-0 lg:p-0">
         <a className="block overflow-hidden text-ellipsis whitespace-nowrap text-cyan-500" href={short} target="_blank" rel="noopener noreferrer">
           {short}
         </a>
         <button
-          className={`rounded-md p-2 text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 ${buttonBg} transition-colors`}
+          className={`h-10 rounded-md px-4 text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 ${buttonBg} transition-colors lg:w-[6.5rem]`}
           onClick={handleCopy}
         >
           {copied ? 'Copied!' : 'Copy'}
