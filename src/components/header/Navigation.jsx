@@ -24,7 +24,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="relative flex items-center px-6 pt-10 pb-6 max-lg:justify-between lg:gap-11 lg:pt-12 lg:pb-20">
+    <nav className="relative mx-auto flex max-w-[calc(69.5rem+3rem)] items-center px-6 pt-10 pb-6 max-lg:justify-between lg:gap-11 lg:pt-12 lg:pb-20">
       <a href="./" aria-label="Shortly Homepage">
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
           <path
