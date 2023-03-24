@@ -1,15 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+const isLargeSize = window.innerWidth >= 1024;
+
 export default function Navigation() {
+  const [isLarge, setIsLarge] = useState(isLargeSize);
   const [isOpen, setIsOpen] = useState(false);
 
   function HandleToggleGuide() {
     setIsOpen(!isOpen);
   }
 
+  useEffect(() => {
+    function handleChange({ matches }) {
+      setIsLarge(matches);
+    }
+
+    matchMedia('(min-width: 1024px)').addEventListener('change', handleChange);
+
+    return () => {
+      matchMedia('min-width: 1024px').removeEventListener('change', handleChange);
+    };
+  }, []);
+
   return (
-    <nav className="relative flex items-center justify-between px-6 pt-10 pb-6">
+    <nav className="relative flex items-center px-6 pt-10 pb-6 max-lg:justify-between lg:gap-11 lg:pt-12 lg:pb-20">
       <a href="./" aria-label="Shortly Homepage">
         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
           <path
@@ -18,46 +33,54 @@ export default function Navigation() {
           />
         </svg>
       </a>
-      <button
-        className="flex h-[21px] w-[24px] items-center justify-center"
-        aria-label="Toggle Guide"
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        onClick={HandleToggleGuide}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#9e9aa7">
-          <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
-        </svg>
-      </button>
+      {!isLarge && (
+        <button
+          className="flex h-[21px] w-[24px] items-center justify-center"
+          aria-label="Toggle Guide"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+          onClick={HandleToggleGuide}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#9e9aa7">
+            <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+          </svg>
+        </button>
+      )}
       <AnimatePresence initial={false}>
-        {isOpen && (
+        {(isOpen || isLarge) && (
           <motion.div
-            className="absolute top-full right-6 flex w-[calc(100%-48px)] max-w-md flex-col items-center rounded-lg bg-violet-700 px-8 py-10 text-center text-md font-medium text-white"
-            variants={guideAnimation}
+            className="flex items-center text-center font-medium text-white max-lg:absolute max-lg:right-6 max-lg:top-full max-lg:w-[calc(100%-48px)] max-lg:max-w-md max-lg:flex-col max-lg:rounded-lg max-lg:bg-violet-700 max-lg:px-8 max-lg:py-10 max-lg:text-md lg:w-full lg:justify-between lg:gap-8 lg:text-violet-400"
+            variants={isLarge ? largeGuideAnimation : mobileGuideAnimation}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            <div className="pb-8">
-              <ul className="flex flex-col gap-8">
+            <div className="max-lg:pb-8">
+              <ul className="flex gap-8 max-lg:flex-col">
                 <li>
-                  <a href="#">Features</a>
+                  <a className="lg:transition-colors lg:hover:text-violet-900 lg:focus-visible:text-violet-900" href="#">
+                    Features
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Pricing</a>
+                  <a className="lg:transition-colors lg:hover:text-violet-900 lg:focus-visible:text-violet-900" href="#">
+                    Pricing
+                  </a>
                 </li>
                 <li>
-                  <a href="#">Resources</a>
+                  <a className="lg:transition-colors lg:hover:text-violet-900 lg:focus-visible:text-violet-900" href="#">
+                    Resources
+                  </a>
                 </li>
               </ul>
             </div>
-            <div className="w-full border-t border-t-violet-400 pt-8">
-              <ul className="flex flex-col gap-6">
+            <div className="max-lg:w-full max-lg:border-t max-lg:border-t-violet-400 max-lg:pt-8">
+              <ul className="flex gap-6 max-lg:flex-col lg:items-center lg:gap-9">
                 <li>
-                  <button>Login</button>
+                  <button className="lg:transition-colors lg:hover:text-violet-900 lg:focus-visible:text-violet-900">Login</button>
                 </li>
                 <li>
-                  <button className="flex h-12 w-full items-center justify-center rounded-3xl bg-cyan-500 transition-[filter] hover:brightness-110 focus-visible:brightness-110">
+                  <button className="flex h-12 w-full items-center justify-center rounded-3xl bg-cyan-500 text-white transition-[filter] hover:brightness-110 focus-visible:brightness-110 lg:h-11 lg:px-6">
                     Sign Up
                   </button>
                 </li>
@@ -70,7 +93,7 @@ export default function Navigation() {
   );
 }
 
-const guideAnimation = {
+const mobileGuideAnimation = {
   hidden: {
     y: '-7%',
     opacity: 0,
@@ -90,5 +113,19 @@ const guideAnimation = {
       duration: 0.2,
       ease: 'easeIn',
     },
+  },
+};
+
+const largeGuideAnimation = {
+  hidden: {
+    opacity: 1,
+  },
+  visible: {
+    transition: {
+      duration: 0,
+    },
+  },
+  exit: {
+    visibility: 'hidden',
   },
 };
