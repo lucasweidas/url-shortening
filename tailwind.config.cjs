@@ -26,6 +26,9 @@ module.exports = {
           300: 'hsl(0, 0%, 75%)',
         },
       },
+      maxWidth: {
+        '5.5xl': '69.5rem',
+      },
     },
   },
   plugins: [],
