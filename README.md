@@ -24,7 +24,7 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 ### Links
 
 - Solution URL: [github.com/lucasweidas/url-shortening](https://github.com/lucasweidas/url-shortening)
-- Live Site URL: [lucasweidas.github.io//](https://lucasweidas.github.io//)
+- Live Site URL: [url-shortening-ebon.vercel](https://url-shortening-ebon.vercel.app/)
 
 ## My process
 
