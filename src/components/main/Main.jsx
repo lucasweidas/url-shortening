@@ -23,7 +23,7 @@ export default function Main() {
       <div className="mt-20 bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20 lg:mt-16 lg:pb-[7.5rem]">
         <div className="mx-auto max-w-2xl lg:max-w-5.5xl">
           {<LinkForm addLink={(original, short) => setLinks([...links, { original, short }])} />}
-          <div className={`mt-6 flex max-h-[29rem] flex-col gap-6 overflow-y-scroll`}>
+          <div className={`mt-6 flex max-h-[29rem] flex-col gap-6 overflow-y-auto`}>
             {links.map(({ original, short }) => (
               <ShortLink key={short} original={original} short={short} />
             ))}
