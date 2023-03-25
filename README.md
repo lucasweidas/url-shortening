@@ -23,7 +23,7 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 
 ### Links
 
-- Solution URL: [github.com/lucasweidas/](https://github.com/lucasweidas/)
+- Solution URL: [github.com/lucasweidas/url-shortening](https://github.com/lucasweidas/url-shortening)
 - Live Site URL: [lucasweidas.github.io//](https://lucasweidas.github.io//)
 
 ## My process
@@ -33,6 +33,7 @@ This is a solution to the [Shortly URL shortening API Challenge challenge on Fro
 - Vite
 - React
 - Tailwind CSS
+- Framer Motion
 - [shrtcode API](https://app.shrtco.de/)
 
 ## Author
