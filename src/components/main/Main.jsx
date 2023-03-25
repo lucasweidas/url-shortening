@@ -1,8 +1,16 @@
 import { useRef, useState } from 'react';
 import workingImg from '/assets/images/illustration-working.svg';
 
+const storageLinks = getLocalStorageLinks();
+
 export default function Main() {
-  const [links, setLinks] = useState([]);
+  const [links, setLinks] = useState(storageLinks);
+
+  function addLink(original, short) {
+    const nextLinks = [...links, { original, short }];
+    setLinks(nextLinks);
+    setLocalStorage('links', nextLinks);
+  }
 
   return (
     <main className="overflow-hidden">
@@ -22,7 +30,7 @@ export default function Main() {
       </section>
       <div className="mt-20 bg-[linear-gradient(to_bottom,#FFF_80px,#f0f1f6_0%)] px-6 pb-20 lg:mt-16 lg:pb-[7.5rem]">
         <div className="mx-auto max-w-2xl lg:max-w-5.5xl">
-          {<LinkForm addLink={(original, short) => setLinks([...links, { original, short }])} />}
+          {<LinkForm addLink={addLink} />}
           <div className={`mt-6 flex max-h-[35rem] flex-col gap-6 overflow-y-auto lg:max-h-[29rem]`}>
             {links.map(({ original, short }) => (
               <ShortLink key={short} original={original} short={short} />
@@ -200,4 +208,21 @@ function getErrorMessage(errorCode) {
       return 'Enter an allowed link';
   }
   return 'Please try again';
+}
+
+function getLocalStorage() {
+  const data = JSON.parse(localStorage.getItem('url-shortening'));
+  if (data) return data;
+  return { links: [] };
+}
+
+function setLocalStorage(key, value) {
+  const data = getLocalStorage();
+  data[key] = value;
+  localStorage.setItem('url-shortening', JSON.stringify(data));
+}
+
+function getLocalStorageLinks() {
+  const data = getLocalStorage();
+  return data.links;
 }
